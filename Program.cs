@@ -16,6 +16,18 @@ if (File.Exists("konyvek.txt"))
                 konyvek.Add(aktualis);
             }
         }
-        else Console.WriteLine($"[HIBA] A(z) {adatok[0]} azonosítójú sor adata hibás, átugorva!");
+        else Console.WriteLine($"[HIBA] A(z) {adatok[0]} azonosítójú sor adata hibás, átugorva!\n");
     }
 }
+Console.WriteLine("=== BEOLVASOTT KÖNYVEK ===");
+foreach (Konyv aktkonyv in konyvek) Console.WriteLine(aktkonyv.ToString());
+Console.WriteLine($"\nRegisztrált könyvek száma a rendszerben: {Konyv.OsszesRegisztraltKonyv} db");
+double nettoErtek = 0;
+foreach (Konyv aktkonyv in konyvek) nettoErtek += aktkonyv.Ar * aktkonyv.RaktarKeszlet;
+Console.WriteLine($"A raktárkészlet teljes bruttó értéke (5% ÁFA-val): {Penzugy.BruttoArSzamitas(nettoErtek)} Ft");
+Konyv legolcsobb = konyvek[0];
+foreach ( Konyv aktkonyv in konyvek) 
+{
+    if (aktkonyv.Ar < legolcsobb.Ar) legolcsobb = aktkonyv;
+}
+Console.WriteLine($"Legolcsóbb könyv: {legolcsobb.Cim} ({legolcsobb.Ar} Ft)");
