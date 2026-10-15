@@ -47,5 +47,13 @@ namespace dolggyak
             RaktarKeszlet = raktarKeszlet;
             osszesRegisztraltKonyv++;
         }
+        public override string ToString() 
+        {
+            return $"{Azonosito} {Szerzo}: {Cim} - {Ar} Ft | Készlet: {RaktarKeszlet} db";
+        }
+        public int TeljesErtek() 
+        {
+            return Ar * RaktarKeszlet;
+        }
     }
 }
