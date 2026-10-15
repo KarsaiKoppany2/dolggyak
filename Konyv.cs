@@ -37,5 +37,15 @@ namespace dolggyak
             }
         }
         public static int OsszesRegisztraltKonyv { get { return osszesRegisztraltKonyv; } }
+        public Konyv(string azonosito, string cim, string szerzo, int ar) :this(azonosito, cim, szerzo, ar, raktarKeszlet:1){}
+        public Konyv(string azonosito, string cim, string szerzo, int ar, int raktarKeszlet) 
+        {
+            Azonosito = azonosito;
+            Cim = cim;
+            Szerzo = szerzo;
+            Ar = ar;
+            RaktarKeszlet = raktarKeszlet;
+            osszesRegisztraltKonyv++;
+        }
     }
 }
